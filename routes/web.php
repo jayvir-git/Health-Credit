@@ -13,3 +13,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/search', function () {
     return view('search');
 });
+Route::post('/apply', [App\Http\Controllers\ApplicationController::class, 'store'])->name('apply');

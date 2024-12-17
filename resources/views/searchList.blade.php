@@ -47,10 +47,16 @@
         </div>
     </section>
     <gmp-map
-        center="37.4220656,-122.0840897"
-        zoom="10"
+        center="{{$providers[0]->lattitude}},{{$providers[0]->longitude}}"
+        zoom="12"
         map-id="DEMO_MAP_ID"
-        style="height: 800px">
+        style="height: 500px">
+        @foreach ($providers as $provider)
+            <gmp-advanced-marker
+                position="{{$provider->lattitude}}, {{$provider->longitude}}"
+                title="{{$provider->name}}"
+            ></gmp-advanced-marker>
+        @endforeach
     </gmp-map>
     <div
         class="w-1/2 max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -107,7 +113,7 @@
         </form>
     </div>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDBLbV6QV2-JjJv7E7Lg7UmtDf5egsFNE&libraries=maps&v=beta"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDBLbV6QV2-JjJv7E7Lg7UmtDf5egsFNE&libraries=maps&v=beta&libraries=marker"
       defer
     ></script>
 </body>

@@ -112,7 +112,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <button type="button"
+                            <button type="submit"
                                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                 <div class="flex items-center pr-1 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 " fill="currentColor" viewbox="0 0 20 20"

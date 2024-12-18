@@ -14,12 +14,13 @@ class SearchProviderController extends Controller
 
     public function SearchProvider(Request $request)
     {
-        if ($request->query('company-name'))
-        {
-            $providers = provider::all();
-            return view('searchList', ['providers' => $providers]);
-        }
         return view('search');
+    }
+
+    public function SearchProviderResults(Request $request)
+    {
+        $providers = provider::all();
+        return view('searchList', ['providers' => $providers]);
     }
 
 }

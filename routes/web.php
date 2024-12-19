@@ -13,4 +13,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/search', function () {
     return view('search');
 });
+Route::get('/apply', [App\Http\Controllers\ApplicationController::class, 'create'])->name('applyForm');
 Route::post('/apply', [App\Http\Controllers\ApplicationController::class, 'store'])->name('apply');

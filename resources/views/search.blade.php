@@ -20,21 +20,21 @@
 <body>
     <x-navbar />
     <section class="bg-gray-50 dark:bg-gray-900 h-screen flex items-center">
-        <form action="/search/results" method="post" class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
+        <form action="/search/results" method="POST" class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
             <!-- Start coding here -->
             @csrf
             <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
                 <div
                     class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                     <div class="w-full md:w-1/2">
-                        <form class="flex items-center">
+                        <div class="flex items-center">
                             <label for="simple-search" class="sr-only">Search</label>
                             <div class="relative w-full">
-                                <input type="text" id="simple-search"
+                                <input name="name" type="text" id="simple-search"
                                     class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Search" required="">
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div
                         class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
@@ -49,7 +49,7 @@
                                             stroke-width="2" d="M1 1h16" />
                                     </svg>
                                 </button>
-                                <input type="text" id="bedrooms-input" data-input-counter data-input-counter-min="1"
+                                <input name="distance" type="text" id="bedrooms-input" data-input-counter data-input-counter-min="1"
                                     data-input-counter-max="5" aria-describedby="helper-text-explanation"
                                     class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="" value="3" required />
@@ -77,7 +77,7 @@
                                             d="M8 0a7.992 7.992 0 0 0-6.583 12.535 1 1 0 0 0 .12.183l.12.146c.112.145.227.285.326.4l5.245 6.374a1 1 0 0 0 1.545-.003l5.092-6.205c.206-.222.4-.455.578-.7l.127-.155a.934.934 0 0 0 .122-.192A8.001 8.001 0 0 0 8 0Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                                     </svg>
                                 </div>
-                                <input type="text" id="zip-input" aria-describedby="helper-text-explanation"
+                                <input type="text" name="zipcode" id="zip-input" aria-describedby="helper-text-explanation"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="12345 or 12345-6789" pattern="^\d{5}(-\d{4})?$" required />
                             </div>
@@ -103,7 +103,7 @@
                                 <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                     @foreach (['Cosmetic', 'Vision', 'Dental', 'Hearing', 'Veterinary', 'General', 'Other'] as $sp)
                                         <li class="flex items-center">
-                                            <input id="apple" type="checkbox" value=""
+                                            <input name="specialty[]" id="apple" type="checkbox" value="{{$sp}}"
                                                 class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
                                             <label for="apple"
                                                 class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
@@ -113,7 +113,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <button type="submit"
+                            <button type="submit" value="submit"
                                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                 <div class="flex items-center pr-1 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 " fill="currentColor" viewbox="0 0 20 20"

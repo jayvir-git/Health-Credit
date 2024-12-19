@@ -25,6 +25,7 @@ class ApplicationController extends Controller
     public function create()
     {
         //
+        return view('apply');
     }
 
     /**
@@ -33,13 +34,17 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         //
-        $appc = new application();
-        $appc->last_4_ssn = $request->input('last_4_ssn');
-        $appc->mobile_number = $request->input('mobile_number');
-        $appc->status = 'pending';
-        $appc->user_id = $request->input('user_id');
-        $appc->provider_id = $request->input('provider_id');
-        $appc->save();
+        $msg = 'inside the store';
+        var_dump($msg);
+        $validated = $request->validate([
+            'last_4_ssn' => 'required|string|min:4|max:4',
+            'mobile_number' => 'required|string|min:10|max:10',
+            'user_id' => 'required|string',
+            'provider_id' => 'required|string',
+        ]);
+        var_dump($validated);
+        application::create(array_merge(['status' => 'pending'], $validated));
+        return redirect()->route('home');
     }
 
     /**

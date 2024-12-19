@@ -30,6 +30,7 @@
                                 <th scope="col" class="px-4 py-3">Company Name</th>
                                 <th scope="col" class="px-4 py-3">Specialty</th>
                                 <th scope="col" class="px-4 py-3">Address</th>
+                                <th scope="col" class="px-4 py-3"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,9 @@
                                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$provider->name}}</th>
                                     <td class="px-4 py-3">{{$provider->specialty}}</td>
                                     <td class="px-4 py-3">{{$provider->address}}</td>
+                                    <td class="px-4 py-3">
+                                        <a href="/apply?providerId={{$provider->id}}&userId={{auth()->user()->id}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

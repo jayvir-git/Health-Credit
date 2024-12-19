@@ -46,18 +46,20 @@
             </div>
         </div>
     </section>
-    <gmp-map
-        center="{{$providers[0]->lattitude}},{{$providers[0]->longitude}}"
-        zoom="12"
-        map-id="DEMO_MAP_ID"
-        style="height: 500px">
-        @foreach ($providers as $provider)
-            <gmp-advanced-marker
-                position="{{$provider->lattitude}}, {{$provider->longitude}}"
-                title="{{$provider->name}}"
-            ></gmp-advanced-marker>
-        @endforeach
-    </gmp-map>
+    @if ($providers != null)
+        <gmp-map
+            center="{{$providers[0]->lattitude}},{{$providers[0]->longitude}}"
+            zoom="12"
+            map-id="DEMO_MAP_ID"
+            style="height: 500px">
+            @foreach ($providers as $provider)
+                <gmp-advanced-marker
+                    position="{{$provider->lattitude}}, {{$provider->longitude}}"
+                    title="{{$provider->name}}"
+                ></gmp-advanced-marker>
+            @endforeach
+        </gmp-map>        
+    @endif
     
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDBLbV6QV2-JjJv7E7Lg7UmtDf5egsFNE&libraries=maps&v=beta&libraries=marker"

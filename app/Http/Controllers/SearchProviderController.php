@@ -19,7 +19,22 @@ class SearchProviderController extends Controller
 
     public function SearchProviderResults(Request $request)
     {
-        $providers = provider::all();
+        $providers = provider::query();
+        
+        if ($request->has('name')) {
+            $providers = $providers->where('name', 'like', '%' . $request->input('name') . '%');
+        }
+        
+        if ($request->has('specialty')) {
+            $providers = $providers->whereIn('specialty', $request->input('specialty'));
+        }
+
+        if ($request->has('zipcode')) {
+            $providers = $providers->where('zipcode', $request->input('zipcode'));
+        }
+
+        $providers = $providers->get()->all();
+        
         return view('searchList', ['providers' => $providers]);
     }
 

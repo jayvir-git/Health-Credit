@@ -41,6 +41,7 @@ class LoginTest extends TestCase
         );
 
         $this->driver = RemoteWebDriver::create($url, $capabilities);
+        $this->driver->manage()->timeouts()->implicitlyWait(1);
     }
 
     public function tearDown(): void
@@ -49,7 +50,7 @@ class LoginTest extends TestCase
         parent::tearDown();
     }
 
-    public function testExample()
+    public function testLoginSuccess()
     {
         $this->driver->get('http://health_credit.test/login');
         $emailInput = $this->driver->findElement(WebDriverBy::id('email'));
@@ -60,11 +61,34 @@ class LoginTest extends TestCase
 
         $pwdInput->submit();
 
+
+
         $newUrl = $this->driver->getCurrentUrl();
         $userAccount = $this->driver->findElements(WebDriverBy::id('dropdownUserAvatarButton'));
 
         $this->assertEquals('http://health_credit.test/', $newUrl);
         $this->assertNotEmpty($userAccount);
+
+    }
+
+    public function testLoginFail()
+    {
+        $this->driver->get('http://health_credit.test/login');
+        $emailInput = $this->driver->findElement(WebDriverBy::id('email'));
+        $emailInput->sendKeys('piyush.awr@gmail.co');
+
+        $pwdInput = $this->driver->findElement(WebDriverBy::id('password'));
+        $pwdInput->sendKeys('j7TUgSWKr6Vytvx');
+
+        $pwdInput->submit();
+
+
+
+        $newUrl = $this->driver->getCurrentUrl();
+        $userAccount = $this->driver->findElements(WebDriverBy::id('dropdownUserAvatarButton'));
+
+        $this->assertNotEquals('http://health_credit.test/', $newUrl);
+        $this->assertEmpty($userAccount);
 
     }
 }

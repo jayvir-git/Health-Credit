@@ -6,43 +6,49 @@
 
         <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach (['Cosmetic', 'Vision', 'Dental', 'Hearing', 'Veterinary', 'General', 'Other'] as $sp)
-                <a id="{{ $sp }}"
-                    class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                    {{-- <form action="{{ route('results') }}" method="POST"> --}}
-                    {{-- @csrf --}}
-                    {{-- <input type="checkbox" name="specialty" id="specialty" value="{{ $sp }}" hidden> --}}
-                    {{-- <span class="text-sm font-medium text-gray-900 dark:text-white">{{ $sp }}</span> --}}
+                <a
+                    class="specialty flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     {{ $sp }}
-                    {{-- </form> --}}
                 </a>
             @endforeach
         </div>
     </div>
 </section>
 <script>
-    document.querySelectorAll('a').forEach(anchor => {
+    document.querySelectorAll('.specialty').forEach(anchor => {
         anchor.addEventListener('click', function(event) {
-            // Your event handling code here
-            event.preventDefault(); // Prevent the default link behavior
-            console.log(anchor)
-            // Perform the POST request
-            fetch('/search/results', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        // Your data here
-                        specialty: anchor.text,
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+            event.preventDefault();
+
+            // Create a form dynamically
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/search/results';
+
+            // Add CSRF token
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = '_token';
+            csrfInput.value = document.querySelector('meta[name="csrf-token"]')?.content;
+            form.appendChild(csrfInput);
+
+            // Add specialty data
+            // const specialtyInput = document.createElement('input');
+            // specialtyInput.type = 'hidden';
+            // specialtyInput.name = 'specialty';
+            // specialtyInput.value = anchor.innerText;
+            // form.appendChild(specialtyInput);
+            const specialties = [anchor.innerText]; // Convert to an array if needed
+            specialties.forEach(specialty => {
+                const specialtyInput = document.createElement('input');
+                specialtyInput.type = 'hidden';
+                specialtyInput.name = 'specialty[]'; // Use the `[]` notation
+                specialtyInput.value = specialty;
+                form.appendChild(specialtyInput);
+            });
+
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
         });
     });
 </script>

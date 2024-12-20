@@ -100,7 +100,7 @@
                     <a href="{{ route('search') }}" class="text-gray-900 dark:text-white hover:underline">Providers</a>
                 </li>
                 <li>
-                    <a href="#contact" class="text-gray-900 dark:text-white hover:underline">Contact</a>
+                    <a href="{{ route('home') }}" class="text-gray-900 dark:text-white hover:underline">Contact</a>
                 </li>
             </ul>
         </div>

@@ -58,20 +58,5 @@
         </div>
     </section>
 </body>
-{{-- <script>
-    const params = route().params;
-    const form = document.querySelector('form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        formData.append('providerId', params.providerId);
-        formData.append('userId', params.userId);
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        });
-    });
-
-</script> --}}
 
 </html>

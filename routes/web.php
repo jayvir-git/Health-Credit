@@ -15,3 +15,5 @@ Route::get('/search', [SearchProviderController::class, 'SearchProvider'])->name
 Route::post('/search/results', [SearchProviderController::class, 'SearchProviderResults'])->name('results');
 Route::get('/apply', [App\Http\Controllers\ApplicationController::class, 'create'])->name('applyForm');
 Route::post('/apply', [App\Http\Controllers\ApplicationController::class, 'store'])->name('apply');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'ShowImportForm'])->name('admin');
+Route::post('/admin', [App\Http\Controllers\AdminController::class, 'BatchImportCSV'])->name('adminImport');

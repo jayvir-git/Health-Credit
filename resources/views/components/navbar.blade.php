@@ -64,7 +64,7 @@
                             aria-labelledby="dropdownUserAvatarButton">
                             <li>
                                 <a href="{{ route('admin') }}"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="dashboard">Dashboard</a>
                             </li>
                         </ul>
                     @endif
@@ -100,7 +100,7 @@
                     <a href="{{ route('search') }}" class="text-gray-900 dark:text-white hover:underline">Providers</a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" class="text-gray-900 dark:text-white hover:underline">Contact</a>
+                    <a href="{{ route('home').'#contact' }}" class="text-gray-900 dark:text-white hover:underline">Contact</a>
                 </li>
             </ul>
         </div>

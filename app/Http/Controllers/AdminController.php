@@ -26,6 +26,9 @@ class AdminController extends Controller
 
     public function BatchImportCSV(Request $request)
     {
+        if (!Auth::user()->isAdmin) {
+            return redirect('/');
+        }
         $request->validate([
             'csv_file' => 'required|file|mimes:csv,txt'
         ]);

@@ -31,12 +31,6 @@
             csrfInput.value = document.querySelector('meta[name="csrf-token"]')?.content;
             form.appendChild(csrfInput);
 
-            // Add specialty data
-            // const specialtyInput = document.createElement('input');
-            // specialtyInput.type = 'hidden';
-            // specialtyInput.name = 'specialty';
-            // specialtyInput.value = anchor.innerText;
-            // form.appendChild(specialtyInput);
             const specialties = [anchor.innerText]; // Convert to an array if needed
             specialties.forEach(specialty => {
                 const specialtyInput = document.createElement('input');

@@ -34,13 +34,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ( $providers  as $provider)
+                            @foreach ($providers as $provider)
                                 <tr class="border-b dark:border-gray-700">
-                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$provider->name}}</th>
-                                    <td class="px-4 py-3">{{$provider->specialty}}</td>
-                                    <td class="px-4 py-3">{{$provider->address}}</td>
+                                    <th scope="row"
+                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $provider->name }}</th>
+                                    <td class="px-4 py-3">{{ $provider->specialty }}</td>
+                                    <td class="px-4 py-3">{{ $provider->address }}</td>
                                     <td class="px-4 py-3">
-                                        <a href="/apply?providerId={{$provider->id}}&userId={{auth()->user()->id}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</a>
+                                        <a href="/apply?providerId={{ $provider->id }}&userId={{ auth()->user()->id }}&providerName={{ $provider->name }}"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-1.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -51,22 +54,16 @@
         </div>
     </section>
     @if ($providers != null)
-        <gmp-map
-            center="{{$providers[0]->lattitude}},{{$providers[0]->longitude}}"
-            zoom="12"
-            map-id="DEMO_MAP_ID"
-            style="height: 500px">
+        <gmp-map center="{{ $providers[0]->lattitude }},{{ $providers[0]->longitude }}" zoom="12"
+            map-id="DEMO_MAP_ID" style="height: 500px">
             @foreach ($providers as $provider)
-                <gmp-advanced-marker
-                    position="{{$provider->lattitude}}, {{$provider->longitude}}"
-                    title="{{$provider->name}}"
-                ></gmp-advanced-marker>
+                <gmp-advanced-marker position="{{ $provider->lattitude }}, {{ $provider->longitude }}"
+                    title="{{ $provider->name }}"></gmp-advanced-marker>
             @endforeach
-        </gmp-map>        
+        </gmp-map>
     @endif
-    
+
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDBLbV6QV2-JjJv7E7Lg7UmtDf5egsFNE&libraries=maps&v=beta&libraries=marker"
-      defer
-    ></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDBLbV6QV2-JjJv7E7Lg7UmtDf5egsFNE&libraries=maps&v=beta&libraries=marker"
+        defer></script>
 </body>

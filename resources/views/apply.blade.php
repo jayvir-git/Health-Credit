@@ -39,19 +39,16 @@
                             placeholder="0000" pattern="[0-9]{4}" required="">
                     </div>
                     <div>
-                        <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User
-                            ID</label>
-                        <input type="text" name="user_id" id="user_id"
+                        <label for="provider_name"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provider Name</label>
+                        <input type="text" name="provider_name" id="provider_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="" required="">
+                            placeholder="" value="{{ request('providerName') }}">
                     </div>
-                    <div>
-                        <label for="provider_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provider ID</label>
-                        <input type="text" name="provider_id" id="provider_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="" required="">
-                    </div>
+                    <input type="text" name="provider_id" id="provider_id" placeholder=""
+                        value="{{ request('providerId') }}" hidden>
+                    <input type="text" name="user_id" id="user_id" placeholder="" value="{{ request('userId') }}"
+                        hidden>
                 </div>
                 <button type="submit"
                     class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
@@ -61,5 +58,20 @@
         </div>
     </section>
 </body>
+{{-- <script>
+    const params = route().params;
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        formData.append('providerId', params.providerId);
+        formData.append('userId', params.userId);
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        });
+    });
+
+</script> --}}
 
 </html>

@@ -20,7 +20,7 @@
 <body>
     <x-navbar />
     <section class="bg-gray-50 dark:bg-gray-900 h-screen flex items-center">
-        <form action="/search/results" method="POST" class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
+        <form action="{{ route('results') }}" method="POST" class="max-w-screen-xl px-4 mx-auto lg:px-12 w-full">
             <!-- Start coding here -->
             @csrf
             <div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">

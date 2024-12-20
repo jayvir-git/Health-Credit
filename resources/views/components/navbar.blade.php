@@ -75,10 +75,10 @@
         <div class="flex items-center">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                 <li>
-                    <a href="#home" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
+                    <a href="{{ route('home') }}" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="#content" class="text-gray-900 dark:text-white hover:underline">Providers</a>
+                    <a href="{{ route('search') }}" class="text-gray-900 dark:text-white hover:underline">Providers</a>
                 </li>
                 <li>
                     <a href="#contact" class="text-gray-900 dark:text-white hover:underline">Contact</a>
